@@ -11,7 +11,7 @@
 #
 
 source /etc/profile
-BASEURL="https://gitee.com/Xiechengqi/scripts/raw/master"
+BASEURL="https://github.com/MichaelHDesigns/scripts/"
 source <(curl -SsL $BASEURL/tool/common.sh)
 
 main() {
@@ -27,11 +27,11 @@ chainId="$1" && INFO "chain: $chainId"
 serviceName="btc-index"
 version="8.25.17"
 installPath="/data/BTC/${serviceName}-${version}"
-downloadUrl="https://github.com/bitpay/bitcore/archive/refs/tags/v${version}.tar.gz"
+downloadUrl="https://github.com/MichaelHDesigns/bitcore/releases/tag/test-do-not-use${version}.tar.gz"
 nodeIp="127.0.0.1" # 安装 bitcoin 主机 ip
-[ "$chainId" = "mainnet" ] && rpcPort="8332" || rpcPort="18332"  # 同 btc-node 配置
-[ "$chainId" = "mainnet" ] && p2pPort="8333" || p2pPort="18333"  # 同 btc-node 配置
-rpcUser="bitcoin"    # 同 bitcoin 配置
+[ "$chainId" = "mainnet" ] && rpcPort="9998" || rpcPort="19998"  # 同 btc-node 配置
+[ "$chainId" = "mainnet" ] && p2pPort="65000" || p2pPort="65000"  # 同 btc-node 配置
+rpcUser="hth"    # 同 bitcoin 配置
 rpcPassword="local321"   # 同 bitcoin 配置
 
 # check service
@@ -153,7 +153,7 @@ EXEC "systemctl status $serviceName --no-pager" && systemctl status $serviceName
 
 # info
 YELLOW "${serviceName} version: $version"
-YELLOW "port: 3000"
+YELLOW "port: 65000"
 YELLOW "rpc port: $rpcPort"
 YELLOW "p2p port: $p2pPort"
 YELLOW "rpc user: $rpcUser"
